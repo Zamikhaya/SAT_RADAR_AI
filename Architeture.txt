@@ -1,0 +1,65 @@
+SAT_RADAR_AI/
+│
+├── README.md
+├── LICENSE
+├── CHANGELOG.md
+├── CITATION.cff
+├── requirements.txt
+├── environment.yml
+├── .gitignore
+│
+├── config.py
+├── train.py
+├── inference.py
+├── evaluate.py
+│
+├── data/
+│   ├── satellite_loader.py
+│   ├── radar_loader.py
+│   ├── lightning_loader.py
+│   ├── solar_loader.py
+│   ├── pairing.py
+│   ├── preprocessing.py
+│   ├── dataset.py
+│   └── transforms.py
+│
+├── models/
+│   ├── vision_transformer.py
+│   ├── temporal_transformer.py
+│   ├── radar_decoder.py
+│   ├── attention.py
+│   ├── patch_embedding.py
+│   └── fusion.py
+│
+├── losses/
+│   └── losses.py
+│
+├── metrics/
+│   ├── radar_metrics.py
+│   ├── image_metrics.py
+│   └── verification.py
+│
+├── utils/
+│   ├── logger.py
+│   ├── file_utils.py
+│   ├── export_netcdf.py
+│   ├── visualize.py
+│   └── checkpoint.py
+│
+├── tests/
+│   ├── test_satellite_loader.py
+│   ├── test_radar_loader.py
+│   ├── test_pairing.py
+│   └── test_model.py
+│
+├── notebooks/
+│
+├── docs/
+│
+├── checkpoints/
+│
+├── logs/
+│
+├── outputs/
+│
+└── examples/
