@@ -1,0 +1,265 @@
+Development Plan (Version 1.0)
+
+We'll build the project exactly as a professional AI project would be developed.
+
+Sprint 1  ✔ GitHub Repository
+Sprint 2  ✔ MTG FCI Satellite Reader
+Sprint 3  ► Radar Reader
+Sprint 4  ► Pairing Engine
+Sprint 5  ► Dataset Builder
+Sprint 6  ► Vision Transformer
+Sprint 7  ► Training Pipeline
+Sprint 8  ► Evaluation
+Sprint 9  ► Operational Inference
+Sprint 10 ► Scientific Publication
+Sprint 2 ✔ (Completed)
+
+We've already achieved a significant milestone.
+
+MTG FCI Reader
+
+You successfully solved the JPEG-LS issue.
+
+Your reader can now:
+
+✔ Read MTG FCI Level-1C files
+✔ Use Satpy
+✔ Decode JPEG-LS compressed data
+✔ Produce a full 5568×5568 image
+✔ Identify valid pixels
+✔ Read radiance/brightness temperature
+
+This is a major accomplishment because many researchers struggle with MTG FCI decoding.
+
+Sprint 3 — Radar Reader
+
+Next we'll build
+
+data/
+    radar_loader.py
+
+This loader should work for every SAWS radar.
+
+Eventually:
+
+Cape Town
+George
+Durban
+East London
+Bethlehem
+Bloemfontein
+...
+
+all use the same loader.
+
+Functions
+RadarLoader()
+
+load()
+
+read_volume()
+
+read_reflectivity()
+
+read_velocity()
+
+read_dualpol()
+
+get_time()
+
+get_projection()
+
+We'll support:
+
+CF/Radial
+GAMIC
+ODIM HDF5 (if needed later)
+
+Sprint 4 — Pairing Engine
+
+This is the most important module.
+
+Satellite
+        │
+Radar
+        │
+Lightning
+        │
+Solar
+        ▼
+Pairing Engine
+        ▼
+Training Sample
+
+The pairing engine will answer:
+
+"Which radar scan matches this satellite observation?"
+
+It will handle:
+nearest time
+maximum time difference
+missing scans
+duplicate scans
+
+Sprint 5 — Dataset
+
+Then we'll build
+
+dataset.py
+
+Instead of reading files one-by-one,
+
+PyTorch will simply do
+
+dataset[15]
+
+and automatically return
+
+satellite,
+radar
+
+or later
+
+satellite,
+lightning,
+solar,
+radar
+
+This makes training much cleaner.
+
+Sprint 6 — Vision Transformer
+
+Instead of a simple CNN,
+
+we'll build
+
+Satellite
+
+↓
+
+Patch Embedding
+
+↓
+
+Vision Transformer
+
+↓
+
+Decoder
+
+↓
+
+Radar
+
+This is much more suitable for learning long-range spatial relationships in satellite imagery.
+
+Sprint 7 — Training
+
+We'll upgrade train.py into a professional training script.
+
+Features will include:
+
+automatic checkpoint saving
+resume training
+TensorBoard logging
+early stopping
+mixed precision (GPU)
+learning rate scheduling
+validation after each epoch
+
+Sprint 8 — Evaluation
+
+We'll compute not only machine learning losses but meteorological verification metrics.
+
+RMSE
+MAE
+Bias
+CSI
+POD
+FAR
+SSIM
+Correlation
+
+These are the metrics expected in meteorological research.
+
+Sprint 9 — Operational Inference
+
+The pipeline will become:
+
+Incoming MTG Image
+
+↓
+
+AI Model
+
+↓
+
+Radar Prediction
+
+↓
+
+NetCDF
+
+↓
+
+PNG
+
+↓
+
+SAWS Products
+
+Sprint 10 — Scientific Output
+
+By the end of the project, you'll have:
+
+A complete AI framework.
+A reproducible GitHub repository.
+A system that can support journal publications.
+A foundation for operational deployment.
+Repository Structure
+
+I recommend this final structure:
+
+SAT_RADAR_AI/
+│
+├── data/
+│   ├── satellite_loader.py
+│   ├── radar_loader.py
+│   ├── lightning_loader.py
+│   ├── solar_loader.py
+│   ├── pairing.py
+│   ├── preprocessing.py
+│   ├── dataset.py
+│   └── transforms.py
+│
+├── models/
+│   ├── vision_transformer.py
+│   ├── temporal_transformer.py
+│   ├── radar_decoder.py
+│   ├── fusion.py
+│   ├── patch_embedding.py
+│   └── attention.py
+│
+├── metrics/
+│
+├── losses/
+│
+├── utils/
+│
+├── tests/
+│
+├── docs/
+│
+├── notebooks/
+│
+├── outputs/
+│
+├── checkpoints/
+│
+├── logs/
+│
+├── train.py
+├── inference.py
+├── evaluate.py
+├── config.py
+└── README.md
