@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.env/
+.venv/
+env/
+
+# Spyder
+.spyproject/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+
+# Model checkpoints
+checkpoints/
+*.pth
+*.pt
+
+# Outputs
+outputs/
+
+# Large datasets
+DATA/
+SAT/
+RADAR/
+LIGHTNING/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
