@@ -1,0 +1,18 @@
+Milestone 1
+MTG reader
+Radar reader
+Dataset
+
+Milestone 2
+Vision Transformer
+Initial training
+
+Milestone 3
+Temporal Transformer
+Lightning fusion
+
+Milestone 4
+Operational inference
+
+Milestone 5
+Scientific publication
