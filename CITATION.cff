@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+
+title: SAT_RADAR_AI
+
+message: "If you use this software, please cite it."
+
+type: software
+
+authors:
+  - family-names: Magogotya
+    given-names: Zamikhaya
+
+repository-code: https://github.com/Zamikhaya/SAT_RADAR_AI
+
+license: MIT
+
+version: 0.1.0
+
+date-released: 2026-08-05
