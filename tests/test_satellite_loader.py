@@ -4,33 +4,27 @@ Created on Sat Aug  1 01:26:46 2026
 
 @author: Zamikhaya.Magogotya
 """
-import os
-import hdf5plugin
 
-# Tell HDF5 where the plugins are BEFORE loading netCDF4/HDF5
-os.environ["HDF5_PLUGIN_PATH"] = hdf5plugin.PLUGINS_PATH
+from pathlib import Path
+import sys
 
-print("HDF5_PLUGIN_PATH =", os.environ["HDF5_PLUGIN_PATH"])
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-import netCDF4
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
-fname = r"C:\Users\zamikhaya.magogotya\Desktop\000_PHD\VOL\SAT\W_XX-EUMETSAT-Darmstadt,IMG+SAT,MTI1+FCI-1C-RRAD-FDHSI-FD--CHK-BODY--DIS-NC4E_C_EUMT_20260504105839_IDPFI_OPE_20260504105540_20260504105629_N_JLS_O_0066_0025.nc"
+from data.satellite_loader import SatelliteLoader
 
-ds = netCDF4.Dataset(fname)
+SAT_DIR = Path(
+    r"C:\Users\zamikhaya.magogotya\Desktop\000_PHD\VOL\SAT"
+)
 
-var = ds["data"]["ir_105"]["measured"]["effective_radiance"]
+files = sorted(SAT_DIR.glob("*.nc"))
 
-print(var.shape)
-print(var[0, 0])
+loader = SatelliteLoader()
 
-import numpy as np
+img = loader.load(files[14])
 
-data = var[:]
+stats = loader.statistics(img)
 
-print(data.shape)
-
-rows, cols = np.where(~data.mask)
-
-print(rows[0], cols[0])
-
-print(data[rows[0], cols[0]])
+print(stats)
